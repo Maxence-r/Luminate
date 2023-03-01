@@ -14,9 +14,29 @@ body {
     height: 100vh;
     padding: 30px;
     width: 100vw;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #2e2e2e #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+  }
 
 .row-input {
     display: flex;
@@ -69,8 +89,68 @@ body {
     cursor: pointer;
 }
 
+.button__text {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.2s;
+  }
+  
+  .button--loading .button__text {
+    display: none;
+  }
+  
+  .button--loading::after {
+    position: absolute;
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+  }
+  
+  @keyframes button-loading-spinner {
+    from {
+      transform: rotate(0turn);
+    }
+  
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
+.title {
+    color: #969595;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 20px 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image {
+    width: 320px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+}
+
 .images {
-    
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #FFFFFF;
+    backdrop-filter: blur(5.5px);
+    border-radius: 15px; 
+    min-height: 360px;
+    padding-bottom: 15px;
 }
 
 .trending-item:hover {
@@ -133,39 +213,24 @@ body {
     height: 100%;
 }
 
-.img {
-    width: 400px;
-    margin: 20px;
-}
-
-#input {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 40px;
-    outline: none;
-    padding: 0px 15px;
-}
-
-#submit {
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 42px;
-    outline: none;
-    padding: 0px 15px;
-    background-color: #005335;
-    color: #fff;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
     body {
         padding: 10px;
     }
     .banner {
         border-radius: 5px;
+    }
+    .responsive {
+        display: none;
+    }
+    .generate {
+        margin-left: 5px;
+    }
+    .images {
+        justify-content: center;
+        padding-left: 0;
+    }
+    .image {
+        margin-left: 0;
     }
 }

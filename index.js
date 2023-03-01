@@ -8,16 +8,26 @@ document.getElementById('submit').addEventListener('click', function() {
     })
     .then(res => res.json())
     .then(data => {
-        document.querySelectorAll('.img').forEach(img => img.remove());
+        document.querySelectorAll('.image').forEach(img => img.remove());
+        document.querySelector('.images').innerHTML = '';
         data.data.images.forEach(image => {
             let img = document.createElement('img');
-            img.classList.add('img');
+            img.classList.add('image');
             img.src = image.url;
             img.onload = function() {
                 console.log('loaded');
             }
-            document.getElementById('images').appendChild(img);
+            document.querySelector('.images').appendChild(img);
         });
+        document.getElementById('input').value = '';
+        document.getElementById('submit').classList.toggle('button--loading')
     })
     .catch(err => console.log(err));
 });
+
+document.querySelectorAll('.trending-item').forEach(item => {
+    item.addEventListener('click', function() {
+        document.getElementById('input').value = this.innerText;
+        document.getElementById('submit').click();
+    })
+})

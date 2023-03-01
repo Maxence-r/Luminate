@@ -11,17 +11,21 @@
     <img class="logo" src="./assets/logo.svg" alt="logo">
     <div class="banner">Light up your images with Luminate - where AI meets creativity, always free.</div>
     <div class="row-input">
-        <input class="prompt" type="text" placeholder="Enter your prompt here">
-        <button class="generate">Imagine<img class="image-img" src="./assets/arrow.svg"></button>
+        <input id="input" class="prompt" type="text" placeholder="Enter your prompt here">
+        <button id="submit" class="generate" type="button" onclick="this.classList.add('button--loading')">
+            <span class="button__text">Imagine<img class="image-img" src="./assets/arrow.svg"></span>
+        </button>
     </div>
-    <h3 class="trending-title">Trending</h3>
-    <div class="trending">
+    <h3 class="responsive trending-title">Trending</h3>
+    <div class="responsive trending">
         <div class="trending-item">High quality photo of a monkey astronaut</div>
         <div class="trending-item">A centered explosion of colorful powder on a black background</div>
         <div class="trending-item">Two futuristic towers with a skybridge covered in lush foliage, digital art</div>
         <div class="trending-item">A sunlit indoor lounge area with a pool with clear water and another pool with translucent pastel pink water, next to a big window, digital art</div>
     </div>
-    <div class="images"></div>
+    <div class="images">
+        <h1 class="title">Image will be cooked up here !</h1>
+    </div>
     <div class="dots"></div>
 </body>
 <script src="index.js"></script>
